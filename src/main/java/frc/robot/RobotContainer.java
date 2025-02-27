@@ -123,11 +123,9 @@ public class RobotContainer {
     );
 
     NamedCommands.registerCommand("RightHourTwoAuto",
-      new CoralPlacement(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-        ReefSubPose.A, CraneConstants.kPositionL2));
+      new CoralPlacement(m_handler, m_crane, ReefSubPose.A, CraneConstants.kPositionL2));
     NamedCommands.registerCommand("LeftHourTenAuto",
-      new CoralPlacement(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-      ReefSubPose.A, CraneConstants.kPositionL2));
+      new CoralPlacement(m_handler, m_crane, ReefSubPose.A, CraneConstants.kPositionL2));
     m_chooser.setDefaultOption("Empty Auto", new PathPlannerAuto("Empty Auto"));
     m_chooser.addOption("Right Cross The Line", new PathPlannerAuto("Right Cross The Line"));
     m_chooser.addOption("Middle Cross The Line", new PathPlannerAuto("Middle Cross The Line"));
@@ -230,8 +228,7 @@ public class RobotContainer {
           m_operatorController.getRawButton(OIConstants.kLevel2Button))
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(new CoralPlacement(
-          m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-          ReefSubPose.A, CraneConstants.kPositionL2));
+          m_handler, m_crane, ReefSubPose.A, CraneConstants.kPositionL2));
 
       // Automatic level three A placement
       new Trigger(() ->
@@ -239,8 +236,7 @@ public class RobotContainer {
           m_operatorController.getRawButton(OIConstants.kLevel3Button))
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(new CoralPlacement(
-          m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-          ReefSubPose.A, CraneConstants.kPositionL3));
+          m_handler, m_crane, ReefSubPose.A, CraneConstants.kPositionL3));
 
       // Automatic level two B placement
       new Trigger(() ->
@@ -248,8 +244,7 @@ public class RobotContainer {
           m_operatorController.getRawButton(OIConstants.kLevel2Button))
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(new CoralPlacement(
-          m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-          ReefSubPose.B, CraneConstants.kPositionL2));
+          m_handler, m_crane, ReefSubPose.B, CraneConstants.kPositionL2));
 
       // Automatic level three B placement
       new Trigger(() ->
@@ -257,8 +252,7 @@ public class RobotContainer {
           m_operatorController.getRawButton(OIConstants.kLevel3Button))
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(new CoralPlacement(
-          m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-          ReefSubPose.B, CraneConstants.kPositionL3));
+          m_handler, m_crane, ReefSubPose.B, CraneConstants.kPositionL3));
 
       // Automatic level one placement
       // new JoystickButton(m_operatorController, OIConstants.kLevel1Button)
@@ -272,8 +266,7 @@ public class RobotContainer {
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(Commands.runOnce(() -> {
           new GetAlgae(
-            m_robotDrive, m_handler, m_crane, m_fieldPoseUtil, 
-            ReefSubPose.ALGAE, CraneConstants.kPositionHiAlgae);
+            m_handler, m_crane, ReefSubPose.ALGAE, CraneConstants.kPositionHiAlgae);
         }, m_robotDrive, m_crane));
 
       // Automatic low algae
@@ -281,8 +274,7 @@ public class RobotContainer {
         .debounce(OIConstants.kDebounceSeconds)
         .onTrue(Commands.runOnce(() -> {
           new GetAlgae(
-            m_robotDrive, m_handler, m_crane, m_fieldPoseUtil, 
-            ReefSubPose.ALGAE, CraneConstants.kPositionLoAlgae);
+            m_handler, m_crane, ReefSubPose.ALGAE, CraneConstants.kPositionLoAlgae);
         }, m_robotDrive, m_crane));
 
       // new Trigger(() -> m_operatorController.getPOV() == OIConstants.kAlgaeProcessorPOV)
@@ -305,8 +297,7 @@ public class RobotContainer {
       // Automatic coral intake
       new JoystickButton(m_operatorController, OIConstants.kIntakeCoralButton)
         .debounce(OIConstants.kDebounceSeconds)
-        .onTrue(new GetCoral(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
-          m_selectedCoralStationSlot));
+        .onTrue(new GetCoral(m_handler, m_crane, m_selectedCoralStationSlot));
       
       // Eject
       new JoystickButton(m_operatorController, OIConstants.kEjectButton)
