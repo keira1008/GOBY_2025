@@ -136,6 +136,9 @@ public class RobotContainer {
     NamedCommands.registerCommand("Place A2",
       new CoralPlacement(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
       ReefSubPose.A, CraneConstants.kPositionL2));
+    NamedCommands.registerCommand("Place A3",
+      new CoralPlacement(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
+      ReefSubPose.A, CraneConstants.kPositionL3));
     NamedCommands.registerCommand("Place B2",
       new CoralPlacement(m_robotDrive, m_handler, m_crane, m_fieldPoseUtil,
       ReefSubPose.B, CraneConstants.kPositionL2));
